@@ -1,17 +1,28 @@
 from textblob import TextBlob
 from textblob import Word
+# Selik Samai
+# MS 548 Advanced Programming Concepts and AI. 
+# Python project 1
 
+# I estimate the most lengthy part of this assignment is understanding TextBlob.
+# Part of the issue I expect to have is understanding the usage of the libraries.
+# I also had trouble with getting everything setup too. Coming up with useful functions 
+# was a little difficult too as some of the stuff seemed trivial and could be done
+# without the use of the textblob library, but it would be significantly more code to do so. 
+# There was also some getting used to the Python language. some of ti was pretty trivial but 
+# printing some of the values was a little more difficult than I expected.
 
-
+# I was right about textblob being the most cumbersome. Overall the entire project took just
+# under 5 hours from start to finish which is what I expected it to take. 
 
 
 def MenuOptionFunc():
     print("==============================================================")
     print("Main Menu")
-    print("1.")
-    print("2.")
-    print("3.")
-    print("4.")
+    print("1. Spell checker")
+    print("2. Words in a sentence")
+    print("3. Word count")
+    print("4. Word definition")
     print("5. Exit")
     print ("Enter menu options 1-4 for textblob examples. Enter 5 to Exit")
     print("==============================================================")
@@ -45,7 +56,7 @@ def WordsListFunc(words):
 
 
 
-def GetSentenceAndLangFunc():
+def GetSentence():
     sentence = input("Enter in the sentence. ")
     return sentence
         
@@ -75,7 +86,7 @@ def StartFunc():
             SentenceFunc()
             StartFunc()
         elif menuVal == '3':
-            var = GetSentenceAndLangFunc()
+            var = GetSentence()
             if not var == False:
                 var = GetWordCount(var)
             print("Total words and breakdown are as follows: ")
