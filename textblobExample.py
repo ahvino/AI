@@ -1,5 +1,7 @@
 from textblob import TextBlob
 from textblob import Word
+from datetime import datetime
+
 # Selik Samai
 # MS 548 Advanced Programming Concepts and AI. 
 # Python project 1
@@ -15,6 +17,74 @@ from textblob import Word
 # I was right about textblob being the most cumbersome. Overall the entire project took just
 # under 5 hours from start to finish which is what I expected it to take. 
 
+"""
+For the next iteration of my project, I;d like to try and use Tkinter for a GUI for my application. 
+I think I can extend a lot of the functionality of the menus to work on larger sets of data like from
+a website. I can possibly add something that will allow me to search for certain words in say a blog 
+post and thatword can be user customizable. I'd like to also have the output read back to the user as 
+well and possibly have audio cues when processing a response that is correct or incorrect. 
+"""
+
+###############################################################################
+class CWords:
+    
+    def __init__(self):
+        self.cfilename = ""       
+        self.summary = ""
+        self.tuple = ()
+        
+    def TextRead():   
+        txtSummary = open("TextBlobFunctions.txt", "r")        
+        print(txtSummary.read())
+    
+    def TextWrite(self, tuple):
+        dateNTime = datetime.now()
+        date = dateNTime.strftime("%d/%m/%Y %H:%M:%S") 
+        wrd = tuple[0]
+        definition = tuple[1]
+        
+        values = wrd + ": " + str(definition)
+        summary = date.__str__() + "\n" + "Definition function: "+ values + "\n=======================================\n" 
+        WriteToFileFunc("TextBlobFunctions.txt", summary)
+        
+        
+        
+###############################################################################    
+class cIncorrectWords(CWords):
+    def __init__(self):
+        super().__init__()
+        self.cfilename = "IncorrectWords.txt"
+            
+        # Add a data asa dictionary to the summary
+    def AddToSummary(self, text):    
+        cw = cIncorrectWords()
+        
+        dateNTime = datetime.now()
+        date = dateNTime.strftime("%d/%m/%Y %H:%M:%S")
+        summary = date + "\n" + text + "\n=======================================\n"    
+        WriteToFileFunc(cw.cfilename, summary)
+###############################################################################
+class cCorrectWords(CWords):
+    def __init__(self):
+        super().__init__()
+        self.cfilename = "CorrectWords.txt"
+        
+    def AddToSummary(self,text):    
+        cw = cCorrectWords()
+        print("Text: " + text)
+        print ("filename: " + cw.cfilename)
+        dateNTime = datetime.now()
+        date = dateNTime.strftime("%d/%m/%Y %H:%M:%S")
+        print ("data: " + date)
+        summary = date + "\n" + text + "\n=======================================\n"    
+        print(summary)
+
+        WriteToFileFunc(cw.cfilename, summary)
+
+###############################################################################
+
+
+###############################################################################
 
 def MenuOptionFunc():
     print("==============================================================")
@@ -27,6 +97,13 @@ def MenuOptionFunc():
     print ("Enter menu options 1-4 for textblob examples. Enter 5 to Exit")
     print("==============================================================")
 
+
+def WriteToFileFunc(filename, outputTxt):
+    file = open(filename, "a")   
+    file.write(outputTxt + "\n")   
+    file.close()
+    
+    
 def ExitFunc():
     quit()
 
@@ -35,9 +112,14 @@ def SpellCheckFunc():
     if words.isalpha() == True:
         var = TextBlob(words)
         if words == var.correct():
-            print(words + " was spelled correctly!")
+            correct = cCorrectWords()
+            text = "Spell Check Function: \n" + "'" + words + "' was spelled correctly"
+            correct.AddToSummary(text)
+            
         else:
-            print(words + " was not spelled correctly")        
+            incorrect = cIncorrectWords()
+            text = "Spell Check Function: \n" + "'" + words + "' was spelled incorrectly"
+            incorrect.AddToSummary(text)      
     else:
         print("The input was not a valid word.")
         SpellCheckFunc()
@@ -45,13 +127,14 @@ def SpellCheckFunc():
 
 def SentenceFunc():
     sentence = input("Enter a sentence and we'll provide the words in the sentence. ")
-    WordsListFunc(sentence)
+    var = WordsListFunc(sentence)
+    WriteToFileFunc("TextBlobFunctions.txt", "Sentence Function result: " + var.__str__())
+    
 
 
 def WordsListFunc(words):
     sentence = TextBlob(words)
     var = sentence.words
-    print (var)
     return var
 
 
@@ -71,7 +154,10 @@ def DefineFunc():
     word = input("Enter in a word and we'll define the word. ")
     var = TextBlob(word)
     definition = Word(word).define()
-    print(definition)
+  
+    cw = CWords()
+    cw.tuple = (word, definition)
+    return cw.tuple
     
 
 def StartFunc():
@@ -81,27 +167,30 @@ def StartFunc():
     while run == True:
         if menuVal == '1':            
             SpellCheckFunc()
-            StartFunc()
         elif menuVal == '2':
             SentenceFunc()
-            StartFunc()
         elif menuVal == '3':
             var = GetSentence()
             if not var == False:
                 var = GetWordCount(var)
-            print("Total words and breakdown are as follows: ")
-            print(var)
-            StartFunc()
+                cw = CWords()
+                dateNTime = datetime.now()
+                date = dateNTime.strftime("%d/%m/%Y %H:%M:%S")
+                cw.summary = date + "\n" + "Get Sentence Function: \nTotal words and breakdown are as follows " + var.__str__() + "\n=======================================\n"    
+                print("Total words and breakdown are as follows: ")
+                print(var)
+                WriteToFileFunc("TextBlobFunctions.txt", cw.summary)
         elif menuVal == '4':
             var = DefineFunc()
-            StartFunc()
+            cw = CWords()
+            cw.TextWrite(var)
         elif menuVal == '5':
             print("     Option 5")
             run == False
             ExitFunc()
         else:
             print("You entered an invalid menu option. Please try again.")
-            StartFunc()
+        StartFunc()
 
 StartFunc()
 
