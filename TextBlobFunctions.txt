@@ -1,0 +1,12 @@
+Sentence Function result: ['words', 'in', 'a', 'sentence']
+Sentence Function result: ['words', 'in', 'a', 'sentence']
+Sentence Function result: ['Before', 'starting', 'any', 'coding', 'write', 'down', 'your', 'estimate', 'of', 'how', 'long', 'you', 'anticipate', 'the', 'development', 'of', 'the', 'project', 'to', 'take', 'Put', 'this', 'in', 'a', 'comment', 'at', 'the', 'top', 'of', 'your', 'code', 'below', 'the', 'header', 'comment', 'name', 'date', 'program', 'description', 'Each', 'time', 'you', 'work', 'on', 'the', 'code', 'log', 'the', 'amount', 'of', 'time', 'spent', 'and', 'date', 'below', 'the', 'estimate', 'When', 'you', 'have', 'completed', 'the', 'project', 'compute', 'the', 'number', 'of', 'hours', 'it', 'took', 'to', 'complete', 'it', 'and', 'note', 'this', 'then', 'write', 'a', 'paragraph', 'analysis', 'on', 'why', 'it', 'took', 'longer/shorter', 'and', 'how', 'you', 'can', 'improve', 'for', 'the', 'next', 'project', 'This', 'can', 'be', 'done', 'in', 'a', 'Word', 'document', 'or', 'as', 'comments', 'in', 'your', 'code']
+28/05/2023 18:04:19
+Get Sentence Function: 
+Total words and breakdown are as follows defaultdict(<class 'int'>, {'write': 1, 'a': 3, 'program': 1, 'in': 2, 'python': 1, 'that': 2, 'uses': 1, 'at': 1, 'least': 1, '2': 2, 'different': 1, 'apis': 2, 'from': 1, 'the': 2, 'textblob': 1, 'library': 3, 'or': 1, 'any': 1, 'other': 1, 'were': 1, 'not': 1, 'used': 2, 'previously': 1, 'add': 1, 'additional': 1, 'of': 1, 'your': 2, 'choosing': 1, 'with': 1, 'functions': 1, 'document': 1, 'code': 1, 'create': 1, 'video': 1, 'showing': 1, 'all': 1, 'functionality': 1, 'and': 2, 'explain': 1, 'why': 1, 'you': 2, 'chose': 2, 'how': 1, 'they': 1, 'could': 1, 'be': 1, 'commercial': 1, 'venture': 1})
+=======================================
+
+28/05/2023 18:05:36
+Definition function: document: ['writing that provides information (especially information of an official nature)', "anything serving as a representation of a person's thinking by means of symbolic marks", 'a written account of ownership or obligation', '(computer science) a computer file that contains text (and possibly formatting instructions) using seven-bit ASCII characters', 'record in detail', 'support or supply with references']
+=======================================
+

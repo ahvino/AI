@@ -1,0 +1,50 @@
+28/05/2023 17:02:26
+Spell Check Function: 
+'test' was spelled correctly
+=======================================
+
+28/05/2023 17:29:26
+Spell Check Function: 
+'Help' was spelled correctly
+=======================================
+
+28/05/2023 17:29:28
+Spell Check Function: 
+'Help' was spelled correctly
+=======================================
+
+28/05/2023 17:29:29
+Spell Check Function: 
+'Help' was spelled correctly
+=======================================
+
+28/05/2023 17:29:38
+Spell Check Function: 
+'help' was spelled correctly
+=======================================
+
+28/05/2023 17:35:03
+Spell Check Function: 
+'helper' was spelled correctly
+=======================================
+
+28/05/2023 17:35:40
+Spell Check Function: 
+'helper' was spelled correctly
+=======================================
+
+28/05/2023 17:37:01
+Spell Check Function: 
+'helper' was spelled correctly
+=======================================
+
+28/05/2023 17:48:28
+Spell Check Function: 
+'testing' was spelled correctly
+=======================================
+
+28/05/2023 18:00:39
+Spell Check Function: 
+'define' was spelled correctly
+=======================================
+

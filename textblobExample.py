@@ -71,15 +71,16 @@ class cCorrectWords(CWords):
         
     def AddToSummary(self,text):    
         cw = cCorrectWords()
-        print("Text: " + text)
-        print ("filename: " + cw.cfilename)
+        #print("Text: " + text)
+        #print ("filename: " + cw.cfilename)
         dateNTime = datetime.now()
         date = dateNTime.strftime("%d/%m/%Y %H:%M:%S")
-        print ("data: " + date)
+        #print ("data: " + date)
         summary = date + "\n" + text + "\n=======================================\n"    
-        print(summary)
-
+        #print(summary)
         WriteToFileFunc(cw.cfilename, summary)
+        
+        return text
 
 ###############################################################################
 
@@ -114,8 +115,9 @@ def SpellCheckFunc():
         if words == var.correct():
             correct = cCorrectWords()
             text = "Spell Check Function: \n" + "'" + words + "' was spelled correctly"
-            correct.AddToSummary(text)
-            
+            value = correct.AddToSummary(text)
+            return value
+
         else:
             incorrect = cIncorrectWords()
             text = "Spell Check Function: \n" + "'" + words + "' was spelled incorrectly"
@@ -125,12 +127,36 @@ def SpellCheckFunc():
         SpellCheckFunc()
 
 
+def SpellCheckFunc(words):
+    if words.isalpha() == True:
+        var = TextBlob(words)
+        if words == var.correct():
+            correct = cCorrectWords()
+            text = "Spell Check Function: \n" + "'" + words + "' was spelled correctly"
+            value = correct.AddToSummary(text)
+            return value
+            
+        else:
+            incorrect = cIncorrectWords()
+            text = "Spell Check Function: \n" + "'" + words + "' was spelled incorrectly"
+            incorrect.AddToSummary(text)      
+    else:
+        print("The input was not a valid word.")
+        SpellCheckFunc(words)
+
+
+
+
 def SentenceFunc():
     sentence = input("Enter a sentence and we'll provide the words in the sentence. ")
     var = WordsListFunc(sentence)
     WriteToFileFunc("TextBlobFunctions.txt", "Sentence Function result: " + var.__str__())
     
-
+    
+def SentenceFunc(words):
+    var = WordsListFunc(words)
+    WriteToFileFunc("TextBlobFunctions.txt", "Sentence Function result: " + var.__str__())
+    return var
 
 def WordsListFunc(words):
     sentence = TextBlob(words)
@@ -153,12 +179,19 @@ def GetWordCount(words):
 def DefineFunc():
     word = input("Enter in a word and we'll define the word. ")
     var = TextBlob(word)
-    definition = Word(word).define()
-  
+    definition = Word(word).define() 
     cw = CWords()
     cw.tuple = (word, definition)
     return cw.tuple
-    
+
+
+def DefineFunc(words):
+    var = TextBlob(words)
+    definition = Word(words).define()
+    cw = CWords()
+    cw.tuple = (words, definition)
+    return cw.tuple  
+
 
 def StartFunc():
     MenuOptionFunc()
@@ -192,7 +225,7 @@ def StartFunc():
             print("You entered an invalid menu option. Please try again.")
         StartFunc()
 
-StartFunc()
+#StartFunc()
 
             
         
