@@ -10,3 +10,7 @@ Total words and breakdown are as follows defaultdict(<class 'int'>, {'write': 1,
 Definition function: document: ['writing that provides information (especially information of an official nature)', "anything serving as a representation of a person's thinking by means of symbolic marks", 'a written account of ownership or obligation', '(computer science) a computer file that contains text (and possibly formatting instructions) using seven-bit ASCII characters', 'record in detail', 'support or supply with references']
 =======================================
 
+28/05/2023 20:55:05
+Definition function: enter: ['to come or go into', 'become a participant; be involved in', 'register formally as a participant or member', 'be or play a part of or in', 'make a record of; set down in permanent form', 'come on stage', 'take on duties or office', 'put or introduce into something', 'set out on (an enterprise or subject of study)']
+=======================================
+
