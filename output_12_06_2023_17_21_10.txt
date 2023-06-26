@@ -1,0 +1,1 @@
+Testing recording for about 10 seconds then we'll try the translate function to make some small modifications to the application that I want to test.
