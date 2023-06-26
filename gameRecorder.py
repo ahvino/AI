@@ -36,12 +36,17 @@ from tk import *
 from tkinter import *
 import threading
 import time
+from datetime import datetime
+
 
 top = tkinter.Tk()
 top.geometry("600x300")
 top.title('Main Menu')
 
-
+dateNTime = datetime.now()
+date = dateNTime.strftime("%d_%m_%Y_%H_%M_%S")
+recorderAudioFile = "output_" + date + ".wav"
+recorderAudioText = "output_" + date + ".txt"
 recString = StringVar()
 
 onOff = False
@@ -54,7 +59,7 @@ def StartRecFunc():
     seconds = 10 
     recording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
     sd.wait()
-    write('output.wav', fs, recording)
+    write(recorderAudioFile, fs, recording)
     recString.set("Recording complete")
     LeftBtn.config(image= offImg)  
    
@@ -80,8 +85,7 @@ def TranslateFunc():
     recString.set("Transcribing...")
     print("Entered RunTranslater")
     model = whisper.load_model("base")
-    
-    audio = whisper.load_audio("output.wav")
+    audio = whisper.load_audio(recorderAudioFile)
     audio = whisper.pad_or_trim(audio)
     
     mel = whisper.log_mel_spectrogram(audio).to(model.device)
@@ -92,7 +96,7 @@ def TranslateFunc():
     result = whisper.decode(model, mel, options)
     
     
-    file = open("transcript.txt", "a")
+    file = open(recorderAudioText, "a")
     file.write(result.text)
     file.close()   
     recString.set("Transcription complete!")
