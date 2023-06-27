@@ -1,33 +1,3 @@
-"""
-Selik Samai
-MS 548
-Python Project 
-
-For my project, I'd like to create a tool that can be used while gaming to get
-key information and record it for analysis later on. For instance, if you 
-suspect someone is cheating, you can start the application and dictate what 
-you're seeing, user names, and any messages you're receiving on your end. I 
-don't think I'll be able to get all of it done but I think I can definitely
-implement some of the features. So far, I've looked into using both whisper and
-pytorch for this. Currently I'll focus more so on the dictation and 
-transcribing of what's occurring.  I think the process will be as follows:
-1. Use Tkinter to create base application. 
-2. Record data
-3. Upon completion of recording use whisper to transcribe the data. 
-4. Analyze the data. 
-
-API Libraries
--------------------
-chocolatey, 
-pytorch
-whisper
-Tkinter
-ffmpeg
-scipy
-numpy
-"""
-
-import whisper 
 import sounddevice as sd
 from scipy.io.wavfile import write
 import tkinter
@@ -36,12 +6,15 @@ from tk import *
 from tkinter import *
 import threading
 import time
+import whisper 
 from datetime import datetime
+from PIL import Image, ImageTk
 
 
 top = tkinter.Tk()
 top.geometry("600x300")
 top.title('Main Menu')
+
 
 dateNTime = datetime.now()
 date = dateNTime.strftime("%d_%m_%Y_%H_%M_%S")
@@ -50,8 +23,8 @@ recorderAudioText = "output_" + date + ".txt"
 recString = StringVar()
 
 onOff = False
-onImg = PhotoImage(file = "on.png")
-offImg = PhotoImage(file = "off.png")
+onImg = ImageTk.PhotoImage(file='GameRecorder\on.png')
+offImg = ImageTk.PhotoImage(file='GameRecorder\off.png')
 
 
 def StartRecFunc():
@@ -61,7 +34,7 @@ def StartRecFunc():
     sd.wait()
     write(recorderAudioFile, fs, recording)
     recString.set("Recording complete")
-    LeftBtn.config(image= offImg)  
+    LeftBtn.config(image= onImg)  
    
 
 
@@ -126,4 +99,3 @@ quitBtn.pack(side="bottom")
 
 top.mainloop()
 
-    
