@@ -14,6 +14,10 @@ transcribing of what's occurring.  I think the process will be as follows:
 2. Record data
 3. Upon completion of recording use whisper to transcribe the data. 
 4. Analyze the data. 
+5. Use screen recording for video
+6. Use Audio recording
+7. Combine audio and video 
+8. Translate and determine if speech indicates a cheater is playing. 
 
 
 https://www.thepythoncode.com/article/make-screen-recorder-python
@@ -28,3 +32,9 @@ Tkinter
 ffmpeg
 scipy
 numpy
+cv2
+moviepy
+pyautogui
+threading
+scipy
+sounddevice
